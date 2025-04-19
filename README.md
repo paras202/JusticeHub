@@ -1,7 +1,7 @@
-# LawGPT - AI-Powered Legal Assistant
+# JusticeHub - AI-Powered Legal Assistant
 
 
-LawGPT is an AI-driven legal assistant designed to provide instant legal guidance, simplify complex legal concepts, and help users navigate legal matters efficiently. It leverages Retrieval-Augmented Generation (RAG) to enhance responses with document-based legal knowledge.
+JusticeHub is an AI-driven legal assistant designed to provide instant legal guidance, simplify complex legal concepts, and help users navigate legal matters efficiently. It leverages Retrieval-Augmented Generation (RAG) to enhance responses with document-based legal knowledge.
 
 ## Features
 - **AI-Powered Legal Guidance**: Get instant answers to legal queries.
@@ -22,7 +22,7 @@ LawGPT is an AI-driven legal assistant designed to provide instant legal guidanc
 ## Setup
 
 ```bash
-git clone https://github.com/ayuugoyal/lawgpt
+git clone https://github.com/paras202/JusticeHub
 
 cd lawgpt
 
@@ -53,4 +53,4 @@ pnpm run dev
    - Integrates Google Gemini API for enhanced answers.
 
 ## Live Demo
-Try LawGPT live at: https://lawgpt.ayuugoyal.tech/
+Try JusticeHub live at:
