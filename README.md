@@ -24,7 +24,7 @@ JusticeHub is an AI-driven legal assistant designed to provide instant legal gui
 ```bash
 git clone https://github.com/paras202/JusticeHub
 
-cd lawgpt
+cd JusticeHub
 
 pnpm install
 
