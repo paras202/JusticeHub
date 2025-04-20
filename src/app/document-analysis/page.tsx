@@ -2,14 +2,14 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { useRouter } from "next/navigation"
+// import { useRouter } from "next/navigation"
 import { 
   Upload, 
   Search, 
   File, 
   Trash2, 
   UploadCloud, 
-  CheckCircle,
+  // CheckCircle,
   X,
   AlertCircle,
   ChevronDown 
@@ -23,7 +23,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
+// import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useTheme } from "next-themes"
 import { 
@@ -45,7 +45,7 @@ export default function DocumentAnalysisPage() {
   const isDark = theme === 'dark'
   const [files, setFiles] = useState<File[]>([])
   const [isUploading, setIsUploading] = useState(false)
-  const [isProcessing, setIsProcessing] = useState(false)
+  // const [isProcessing, setIsProcessing] = useState(false)
   const [isDocumentsProcessed, setIsDocumentsProcessed] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [searchResults, setSearchResults] = useState<SearchResult[]>([])
@@ -97,7 +97,7 @@ export default function DocumentAnalysisPage() {
     }
 
     setIsUploading(true)
-    setIsProcessing(true)
+    // setIsProcessing(true)
 
     try {
       const formData = new FormData()
@@ -131,7 +131,7 @@ export default function DocumentAnalysisPage() {
       })
     } finally {
       setIsUploading(false)
-      setIsProcessing(false)
+      // setIsProcessing(false)
     }
   }
 
