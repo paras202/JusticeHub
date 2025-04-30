@@ -10,9 +10,9 @@ import { UserButton, useUser } from "@clerk/nextjs"
 export function Navbar() {
   const { isLoaded, isSignedIn } = useUser()
   const pathname = usePathname()
-  
+
   return (
-    <header className="border-b px-3 flex justify-center border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 border-b px-3 flex justify-center border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between py-4">
         <div className="flex items-center gap-2">
           <Scale className="h-6 w-6 text-law-secondary" />
@@ -44,6 +44,22 @@ export function Navbar() {
             } transition-colors`}
           >
             Document Analysis
+          </Link>
+          <Link
+            href="/lawyer-connect"
+            className={`text-sm font-medium ${
+              pathname === "/lawyer-connect" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            } transition-colors`}
+          >
+            Lawyer Connect
+          </Link>
+          <Link
+            href="/#faq"
+            className={`text-sm font-medium ${
+              pathname === "/" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            } transition-colors`}
+          >
+            FAQ
           </Link>
         </nav>
         <div className="flex items-center gap-4">
