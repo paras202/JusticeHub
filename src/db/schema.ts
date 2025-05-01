@@ -1,4 +1,4 @@
-import { pgTable, uuid, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { pgTable, uuid, text, timestamp, varchar, serial, boolean, integer, numeric } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 export const chats = pgTable("chats", {
@@ -29,3 +29,18 @@ export const messageRelations = relations(messages, ({ one }) => ({
     references: [chats.id],
   }),
 }));
+
+
+export const lawyers = pgTable("lawyers", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  avatar: text("avatar").default("/api/placeholder/150/150"),
+  specialization: text("specialization").notNull(),
+  experience: integer("experience").notNull(),
+  location: text("location").notNull(),
+  rating: numeric("rating", { precision: 2, scale: 1 }).notNull(),
+  reviews: integer("reviews").notNull(),
+  hourlyRate: text("hourly_rate").notNull(), // or use numeric if needed
+  expertise: text("expertise").array().notNull(),
+  availableNow: boolean("available_now").notNull()
+});

@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+torch
+numpy
+sentence-transformers
+pdfplumber
+langchain
+faiss-cpu
+python-multipart
+huggingface-hub
+pydantic

@@ -1,6 +1,9 @@
 import os
 os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "true"
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
+from huggingface_hub import login
+login(token="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")
+print("Successfully logged in to Hugging Face")
 
 import tempfile
 import uvicorn
@@ -19,6 +22,8 @@ import pdfplumber
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from sentence_transformers import SentenceTransformer
+from langchain.embeddings.base import Embeddings
+from contextlib import asynccontextmanager
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -83,32 +88,21 @@ LEGAL_PATTERNS = {
     ]
 }
 
-class CustomInstructorEmbeddings:
+class CustomInstructorEmbeddings(Embeddings):
     def __init__(self, model_name=MODEL_NAME):
         self.model = SentenceTransformer(model_name)
         self.embed_instruction = "Represent the legal document for retrieval:"
         self.query_instruction = "Represent the legal query for retrieval:"
         
     def embed_documents(self, texts):
-        """Embed documents using the instruction model."""
         instructions = [[self.embed_instruction, text] for text in texts]
         embeddings = self.model.encode(instructions)
         return embeddings.tolist()
     
     def embed_query(self, text):
-        """Embed query text using the instruction model."""
         instruction = [[self.query_instruction, text]]
         embedding = self.model.encode(instruction)
         return embedding.tolist()
-    
-    def __call__(self, text):
-        """Make the embeddings callable - determines if this is a single text or multiple texts."""
-        if isinstance(text, str):
-            return self.embed_query(text)
-        elif isinstance(text, list):
-            return self.embed_documents(text)
-        else:
-            raise ValueError("Input must be a string or list of strings")
 
 # Cache the model to avoid reloading
 instructor_model = None
@@ -126,8 +120,10 @@ def get_instructor_model():
             raise RuntimeError(f"Failed to load INSTRUCTOR model: {str(e)}")
     return instructor_model
 
-@app.on_event("startup")
-async def startup_event():
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     global vector_store
     try:
         if os.path.exists(VECTOR_DB_DIR):
@@ -137,6 +133,8 @@ async def startup_event():
     except Exception as e:
         logger.error(f"Could not load vector store: {str(e)}")
         logger.error(traceback.format_exc())
+
+    yield  # App runs here
 
 def extract_named_entities(text):
     """
