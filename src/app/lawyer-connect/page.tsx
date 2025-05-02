@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import Link from "next/link"
+// import Link from "next/link"
 import { motion } from "framer-motion"
-import { Scale, Search, Filter, MapPin, Clock, DollarSign, Star, MessageSquare } from "lucide-react"
+import { Search, Filter, MapPin, Clock, DollarSign, Star, MessageSquare } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/sheet"
 import { Slider } from "@/components/ui/slider"
 import { Badge } from "@/components/ui/badge"
-import { UserButton } from "@clerk/nextjs"
+// import { UserButton } from "@clerk/nextjs"
 import { useUser } from "@clerk/nextjs"
 import { useTheme } from "next-themes"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -145,7 +145,7 @@ const LOCATIONS = [
 
 export default function LawyersConnect() {
   const router = useRouter();
-  const { isLoaded, isSignedIn } = useUser();
+  const { isSignedIn } = useUser();
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -249,59 +249,6 @@ export default function LawyersConnect() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="border-b px-3 flex justify-center border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between py-4">
-          <Link href="/" className="flex items-center gap-2">
-            <Scale className="h-6 w-6 text-law-secondary" />
-            <span className="text-xl font-bold text-law-primary">JusticeHub</span>
-          </Link>
-          <nav className="hidden md:flex items-center gap-6">
-            <Link
-              href="/#features"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Features
-            </Link>
-            <Link
-              href="/#use-cases"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Use Cases
-            </Link>
-            <Link
-              href="/document-analysis"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Document Analysis
-            </Link>
-            <Link
-              href="/connect"
-              className="text-sm font-medium text-foreground transition-colors"
-            >
-              Connect
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            {isLoaded && isSignedIn ? (
-              <UserButton />
-            ) : (
-              <>
-                <Link href="/sign-in">
-                  <Button variant="ghost" className="text-law-primary hover:text-law-primary/90">
-                    Sign In
-                  </Button>
-                </Link>
-                <Link href="/sign-up">
-                  <Button variant="default" className="bg-law-primary hover:bg-law-primary/90">
-                    Sign Up
-                  </Button>
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
-      </header>
-
       <main className="flex-1">
         <section className={`py-8 flex justify-center ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
           <div className="container">

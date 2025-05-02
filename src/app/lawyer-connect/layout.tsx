@@ -1,3 +1,5 @@
+import { Navbar } from "@/components/ui/navbar"
+
 export default function DocumentAnalysisLayout({
   children,
 }: {
@@ -5,7 +7,7 @@ export default function DocumentAnalysisLayout({
 }) {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       {children}
       {/* <Toaster /> */}
     </>
