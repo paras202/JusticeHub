@@ -5,15 +5,31 @@ import { useRouter } from "next/navigation";
 import { ChatHeader } from "@/components/chat/chat-header";
 import { ChatInput } from "@/components/chat/chat-input";
 import { WelcomeMessage } from "@/components/chat/welcome-message";
+import { ChatWithLawyerSearch } from "@/components/chat/chat-with-lawyer-search";
 
 export default function NewChatPage() {
     const router = useRouter();
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [showLawyerSearch, setShowLawyerSearch] = useState(false);
+
+    
 
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setInput(e.target.value);
+
+        // Check if input mentions legal issues or lawyers
+        const legalKeywords = ["lawyer", "attorney", "legal", "law", "rights", "sue", "lawsuit", "contract"];
+        const hasLegalContext = legalKeywords.some(keyword => 
+        e.target.value.toLowerCase().includes(keyword)
+      );
+    
+      setShowLawyerSearch(hasLegalContext && e.target.value.length > 10);
     };
+
+    const handleChatStart = (initialMessage: string) => {
+        setInput(initialMessage);
+      };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -71,6 +87,19 @@ export default function NewChatPage() {
                     <WelcomeMessage
                         handleInputChange={handleInputChange}
                     />
+                     {showLawyerSearch && (
+            <div className="mt-6">
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-md p-3 mb-4">
+                <h3 className="font-medium text-blue-800 dark:text-blue-300">
+                  It looks like you might be looking for legal assistance
+                </h3>
+                <p className="text-sm text-blue-700 dark:text-blue-400 mt-1">
+                  You can search for specialized lawyers who can help with your specific case:
+                </p>
+              </div>
+              <ChatWithLawyerSearch onChatStart={handleChatStart} />
+            </div>
+          )}
                 </div>
             </div>
 

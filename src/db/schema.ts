@@ -44,3 +44,38 @@ export const lawyers = pgTable("lawyers", {
   expertise: text("expertise").array().notNull(),
   availableNow: boolean("available_now").notNull()
 });
+
+// Updated schema to use Clerk authentication
+export const lawyersre = pgTable("lawyersre", {
+  id: serial("id").primaryKey(),
+  // Link to Clerk authentication
+  clerkId: varchar("clerk_id", { length: 256 }).notNull().unique(),
+  name: text("name").notNull(),
+  avatar: text("avatar").default("/api/placeholder/150/150"),
+  specialization: text("specialization").notNull(),
+  experience: integer("experience").notNull(),
+  location: text("location").notNull(),
+  rating: numeric("rating", { precision: 2, scale: 1 }).notNull(),
+  hourlyRate: text("hourly_rate").notNull(),
+  expertise: text("expertise").array().notNull(),
+  availableNow: boolean("available_now").notNull(),
+  email: text("email").notNull().unique(),
+  phone: text("phone"),
+  bio: text("bio"),
+  // Removed password field since authentication is handled by Clerk
+});
+
+// You could add additional tables for education history, reviews, etc.
+export const lawyerEducation = pgTable("lawyer_education", {
+  id: serial("id").primaryKey(),
+  lawyerId: integer("lawyer_id").notNull().references(() => lawyersre.id),
+  institution: text("institution").notNull(),
+  degree: text("degree").notNull(),
+  year: text("year").notNull()
+});
+
+export const lawyerBio = pgTable("lawyer_bio", {
+  lawyerId: integer("lawyer_id").primaryKey().references(() => lawyersre.id),
+  bio: text("bio").notNull()
+});
+

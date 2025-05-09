@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/ui/navbar"
 
-export default function LawyerConnectLayout({
+export default function LawyerRegistrationLayout({
   children,
 }: {
   children: React.ReactNode
@@ -9,7 +9,6 @@ export default function LawyerConnectLayout({
     <>
       <Navbar />
       {children}
-      {/* <Toaster /> */}
     </>
   )
 }

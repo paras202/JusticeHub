@@ -227,6 +227,12 @@ export default function HomePage() {
               Lawyer Connect
             </Link>
             <Link
+             href="/lawyer-registration"
+             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Register as Lawyer
+            </Link>
+            <Link
               href="#faq"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
@@ -269,14 +275,15 @@ export default function HomePage() {
         <section className={`relative flex justify-center px-3 overflow-hidden py-20 md:py-32 ${isDark ? 'bg-gradient-to-b from-gray-900 to-gray-950' : 'bg-gradient-to-b from-white to-gray-50'}`}>
           <div className="container relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <motion.div
-                key={activeSection}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="flex flex-col gap-6"
-              >
+                <motion.div
+                  key={activeSection}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, margin: "-50px" }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="flex flex-col gap-6"
+                >
                 <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs w-fit font-semibold bg-law-secondary/10 text-law-secondary">
                   {heroSections[activeSection].badgeIcon}
                   {heroSections[activeSection].badge}
@@ -311,12 +318,13 @@ export default function HomePage() {
               </motion.div>
               
               <motion.div
-                key={`image-${activeSection}`}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative mx-6"
+               key={`image-${activeSection}`}
+               initial={{ opacity: 0, scale: 0.9 }}
+               whileInView={{ opacity: 1, scale: 1 }}
+               viewport={{ once: false, margin: "-50px" }}
+               exit={{ opacity: 0, scale: 0.9 }}
+               transition={{ duration: 0.5, delay: 0.2 }}
+               className="relative mx-6"
               >
                 {heroSections[activeSection].image}
                 <div className="absolute -z-10 -bottom-6 -right-6 w-full h-full bg-law-secondary/20 rounded-xl"></div>
@@ -358,31 +366,31 @@ export default function HomePage() {
           <div className="container">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mx-4">
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-center"
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: false, amount: 0.3 }}
+               transition={{ duration: 0.5, delay: 0.1 }}
+               className="text-center"
               >
                 <div className="text-4xl font-bold text-law-primary mb-2">10K+</div>
                 <div className="text-sm text-muted-foreground">Legal Questions Answered</div>
               </motion.div>
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-center"
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: false, amount: 0.3 }}
+               transition={{ duration: 0.5, delay: 0.1 }}
+               className="text-center"
               >
                 <div className="text-4xl font-bold text-law-primary mb-2">500+</div>
                 <div className="text-sm text-muted-foreground">Documents Analyzed</div>
               </motion.div>
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-center"
               >
                 <div className="text-4xl font-bold text-law-primary mb-2">98%</div>
                 <div className="text-sm text-muted-foreground">User Satisfaction</div>
@@ -390,8 +398,8 @@ export default function HomePage() {
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-center"
               >
                 <div className="text-4xl font-bold text-law-primary mb-2">50+</div>
@@ -408,7 +416,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5 }}
               >
                 <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm mb-4 w-fit mx-auto font-medium bg-law-primary/10 text-law-primary">
@@ -426,7 +434,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
                 <Card className={`${isDark ? 'bg-gray-800 border-gray-700 hover:bg-gray-700/50' : 'bg-white border-none'} shadow-lg hover:shadow-xl transition-all h-full group`}>
@@ -450,7 +458,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <Link href="/document-analysis" className="block h-full">
@@ -476,7 +484,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <Link href="/lawyer-connect" className="block h-full">
@@ -504,7 +512,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <Card className={`${isDark ? 'bg-gray-800 border-gray-700 hover:bg-gray-700/50' : 'bg-white border-none'} shadow-lg hover:shadow-xl transition-all h-full group`}>
@@ -528,7 +536,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <Card className={`${isDark ? 'bg-gray-800 border-gray-700 hover:bg-gray-700/50' : 'bg-white border-none'} shadow-lg hover:shadow-xl transition-all h-full group`}>
@@ -559,7 +567,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5 }}
               >
                 <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm mb-4 w-fit mx-auto font-medium bg-law-secondary/10 text-law-secondary">
@@ -583,7 +591,7 @@ export default function HomePage() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.2 }}
                   transition={{ duration: 0.5 }}
                 >
                   <Card className={isDark ? 'border-gray-700' : ''}>
@@ -613,7 +621,7 @@ export default function HomePage() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.2 }}
                   transition={{ duration: 0.5 }}
                 >
                   <Card className={isDark ? 'border-gray-700' : ''}>
@@ -642,7 +650,7 @@ export default function HomePage() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.2 }}
                   transition={{ duration: 0.5 }}
                 >
                   <Card className={isDark ? 'border-gray-700' : ''}>
@@ -678,7 +686,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5 }}
               >
                 <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm mb-4 w-fit mx-auto font-medium bg-law-primary/10 text-law-primary">
@@ -693,7 +701,26 @@ export default function HomePage() {
             </div>
 
             <div className="max-w-3xl mx-4 sm:mx-auto">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1
+                  }
+                },
+                hidden: {}
+              }}
+            >
               <Accordion type="single" collapsible className="w-full">
+                <motion.div
+                  variants={{
+                    visible: { opacity: 1, y: 0 },
+                    hidden: { opacity: 0, y: 20 }
+                  }}
+                >
                 <AccordionItem value="item-1">
                   <AccordionTrigger>Is this actual legal advice?</AccordionTrigger>
                   <AccordionContent>
@@ -702,6 +729,13 @@ export default function HomePage() {
                     specific legal matters.
                   </AccordionContent>
                 </AccordionItem>
+               </motion.div>
+               <motion.div
+                  variants={{
+                    visible: { opacity: 1, y: 0 },
+                    hidden: { opacity: 0, y: 20 }
+                  }}
+                >
                 <AccordionItem value="item-2">
                   <AccordionTrigger>How accurate is the information?</AccordionTrigger>
                   <AccordionContent>
@@ -710,6 +744,13 @@ export default function HomePage() {
                     official sources.
                   </AccordionContent>
                 </AccordionItem>
+                </motion.div>
+                <motion.div
+                  variants={{
+                    visible: { opacity: 1, y: 0 },
+                    hidden: { opacity: 0, y: 20 }
+                  }}
+                >
                 <AccordionItem value="item-3">
                   <AccordionTrigger>Is my conversation private?</AccordionTrigger>
                   <AccordionContent>
@@ -717,6 +758,13 @@ export default function HomePage() {
                     identifiable information. However, anonymized data may be used to improve our service.
                   </AccordionContent>
                 </AccordionItem>
+                </motion.div>
+                <motion.div
+                  variants={{
+                    visible: { opacity: 1, y: 0 },
+                    hidden: { opacity: 0, y: 20 }
+                  }}
+                >
                 <AccordionItem value="item-4">
                   <AccordionTrigger>What areas of law does it cover?</AccordionTrigger>
                   <AccordionContent>
@@ -725,6 +773,13 @@ export default function HomePage() {
                     knowledge has limitations and may not cover highly specialized areas.
                   </AccordionContent>
                 </AccordionItem>
+                </motion.div>
+                <motion.div
+                  variants={{
+                    visible: { opacity: 1, y: 0 },
+                    hidden: { opacity: 0, y: 20 }
+                  }}
+                > 
                 <AccordionItem value="item-5">
                   <AccordionTrigger>Can I use this for my legal documents?</AccordionTrigger>
                   <AccordionContent>
@@ -733,6 +788,13 @@ export default function HomePage() {
                     qualified attorney.
                   </AccordionContent>
                 </AccordionItem>
+                </motion.div>
+                <motion.div
+                  variants={{
+                    visible: { opacity: 1, y: 0 },
+                    hidden: { opacity: 0, y: 20 }
+                  }}
+                >
                 <AccordionItem value="item-6">
                   <AccordionTrigger>How do I connect with a real lawyer?</AccordionTrigger>
                   <AccordionContent>
@@ -741,7 +803,9 @@ export default function HomePage() {
                     needs and preferences.
                   </AccordionContent>
                 </AccordionItem>
+                </motion.div>
               </Accordion>
+            </motion.div>
             </div>
           </div>
         </section>
@@ -753,7 +817,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5 }}
               >
                 <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm mb-4 w-fit mx-auto font-medium bg-law-secondary/10 text-law-secondary">
@@ -771,7 +835,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className={`${isDark ? 'bg-gray-800' : 'bg-gray-50'} p-6 rounded-xl`}
               >
@@ -790,7 +854,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className={`${isDark ? 'bg-gray-800' : 'bg-gray-50'} p-6 rounded-xl`}
               >
@@ -809,7 +873,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className={`${isDark ? 'bg-gray-800' : 'bg-gray-50'} p-6 rounded-xl`}
               >
@@ -835,7 +899,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.5 }}
                 transition={{ duration: 0.5 }}
               >
                 <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>

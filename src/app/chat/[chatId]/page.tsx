@@ -9,12 +9,15 @@ import { Message } from "@/components/chat/message";
 import { WelcomeMessage } from "@/components/chat/welcome-message";
 import { LoadingDots } from "@/components/chat/loading-dots";
 import type { Message as MessageType, NewMsg } from "@/types/chat";
+import { ChatWithLawyerSearch } from "@/components/chat/chat-with-lawyer-search";
 
 export default function ChatPage() {
   const params = useParams();
   const chatId = params?.chatId as string;
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+  const [showLawyerSearch, setShowLawyerSearch] = useState(false);
+
 
   const { messages, input, handleInputChange, handleSubmit, isLoading, error, setMessages, reload } = useChat({
     id: chatId,
@@ -50,6 +53,13 @@ export default function ChatPage() {
           reload();
         }
 
+        const userMessages = formattedMessages.filter((msg: NewMsg) => msg.role === "user");
+
+        if (userMessages.length > 0) {
+          const lastMsg = userMessages[userMessages.length - 1].content;
+          checkForLegalContext(lastMsg);
+        }
+
         setInitialLoadComplete(true);
       } catch (error) {
         console.error("Failed to load messages:", error);
@@ -70,6 +80,16 @@ export default function ChatPage() {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
+  
+  const checkForLegalContext = (message: string) => {
+    const legalKeywords = ["lawyer", "attorney", "legal", "law", "rights", "sue", "lawsuit", "contract"];
+    const hasLegalContext = legalKeywords.some(keyword => 
+      message.toLowerCase().includes(keyword)
+    );
+    
+    // Only show lawyer search if message is substantial and has legal context
+    setShowLawyerSearch(hasLegalContext && message.length > 10);
+  };
 
   const saveMessage = async (role: string, content: string) => {
     if (!chatId) return;
@@ -88,6 +108,10 @@ export default function ChatPage() {
         const title = content.slice(0, 30) + (content.length > 30 ? "..." : "");
         updateChatTitle(title);
       }
+        // Check for legal context if it's a user message
+        if (role === "user") {
+          checkForLegalContext(content);
+        }
     } catch (error) {
       console.error("Failed to save message:", error);
     }
@@ -159,6 +183,21 @@ export default function ChatPage() {
                 />
               );
             })}
+
+            {showLawyerSearch && !isLoading && (
+              <div className="my-4">
+                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-md p-3 mb-4">
+                  <h3 className="font-medium text-blue-800 dark:text-blue-300">
+                    It looks like you might need legal assistance
+                  </h3>
+                  <p className="text-sm text-blue-700 dark:text-blue-400 mt-1">
+                    Here are some lawyers who specialize in issues like yours:
+                  </p>
+                </div>
+                <ChatWithLawyerSearch />
+              </div>
+            )}
+
             {isLoading && (
               <div className="flex items-end ml-2">
                 <div className="relative flex h-9 w-9 items-center justify-center rounded-full 

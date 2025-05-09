@@ -22,7 +22,7 @@ export default function SignInPage() {
                         footerActionLink: "text-law-primary hover:text-law-primary/90",
                     },
                 }}
-                fallbackRedirectUrl={"/chat"}
+                fallbackRedirectUrl={"/"}
             />
 
         </div>
