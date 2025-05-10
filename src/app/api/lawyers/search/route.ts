@@ -4,7 +4,7 @@ import { db } from "@/db";
 import { lawyers } from "@/db/schema";
 import { currentUser } from "@clerk/nextjs/server"
 
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.NEXT_PUBLIC_GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_SECRET_KEY}`;
 
 export async function POST(req: Request) {
   try {

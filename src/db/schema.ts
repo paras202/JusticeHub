@@ -79,3 +79,24 @@ export const lawyerBio = pgTable("lawyer_bio", {
   bio: text("bio").notNull()
 });
 
+export const lawyermessage = pgTable("lawyermessage", {
+  id: serial("id").primaryKey(),
+  senderId: text("sender_id").notNull(),
+  receiverId: text("receiver_id").notNull(),
+  content: text("content").notNull(),
+  timestamp: timestamp("timestamp").defaultNow().notNull(),
+  isRead: boolean("is_read").default(false).notNull(),
+  attachments: text("attachments").array()
+});
+
+// Consultations table for scheduling
+export const consultations = pgTable("consultations", {
+  id: serial("id").primaryKey(),
+  userId: text("user_id").notNull(),
+  lawyerId: integer("lawyer_id").notNull(),
+  scheduledAt: timestamp("scheduled_at").notNull(),
+  duration: integer("duration").notNull(), // in minutes
+  status: text("status").notNull(), // "pending", "confirmed", "completed", "cancelled"
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull()
+});
