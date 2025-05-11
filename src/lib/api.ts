@@ -1,5 +1,5 @@
 // src/lib/api.ts
-const API_BASE_URL = "https://justicehub-backend.onrender.com";
+const API_BASE_URL = "https://justicehub-backend-bpvv.onrender.com/";
 
 export interface SearchResult {
   content: string;
