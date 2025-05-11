@@ -105,7 +105,7 @@ export default function DocumentAnalysisPage() {
         formData.append("files", file)
       })
       
-      const response = await fetch("https://justicehub-backend.onrender.com/upload-documents/", {
+      const response = await fetch("https://justicehub-backend-bpvv.onrender.com/upload-documents/", {
         method: "POST",
         body: formData,
       })
@@ -149,7 +149,7 @@ export default function DocumentAnalysisPage() {
 
     try {
       const finalQuery = searchQuery || selectedPresetQuery
-      const response = await fetch("https://justicehub-backend.onrender.com/search/", {
+      const response = await fetch("https://justicehub-backend-bpvv.onrender.com/search/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
