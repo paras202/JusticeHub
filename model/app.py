@@ -102,7 +102,9 @@ class CustomInstructorEmbeddings(Embeddings):
     def embed_query(self, text):
         instruction = [[self.query_instruction, text]]
         embedding = self.model.encode(instruction)
-        return embedding.tolist()
+        flat_embedding = embedding[0].tolist()
+        logger.debug(f"Query embedding length: {len(flat_embedding)}")
+        return flat_embedding
 
 # Cache the model to avoid reloading
 instructor_model = None
