@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
+import { MessageSquare } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // Define types for the dashboard
 interface LawyerProfile {
@@ -422,6 +424,13 @@ export default function LawyerDashboardPage() {
           >
             Profile
           </button>
+          <Button 
+                                  className="w-full bg-law-primary hover:bg-law-primary/90"
+                                  onClick={() => window.location.href = "/videocall"}
+>
+                                  <MessageSquare className="mr-2 h-4 w-4" />
+                                  Request a video call
+                                 </Button>
         </nav>
       </aside>
 

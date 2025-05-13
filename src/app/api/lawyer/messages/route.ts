@@ -6,6 +6,9 @@ import { auth } from "@clerk/nextjs/server";
 import { eq, and, desc } from "drizzle-orm";
 import { v4 as uuidv4 } from 'uuid';
 
+// Add this export to mark the route as dynamic
+export const dynamic = 'force-dynamic';
+
 // GET endpoint to retrieve messages for a lawyer
 export async function GET(request: NextRequest) {
   try {

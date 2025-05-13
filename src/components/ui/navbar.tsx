@@ -31,7 +31,8 @@ export function Navbar() {
     { href: "/#use-cases", label: "Use Cases" },
     { href: "/document-analysis", label: "Document Analysis" },
     { href: "/lawyer-connect", label: "Lawyer Connect" },
-    { href: "/lawyer-registration", label: "Register as Lawyer" },
+    { href: "/lawyer-registration", label: "Register" },
+    { href: "/lawyer-dashboard", label: "Dashboard" },
     { href: "/#faq", label: "FAQ" },
   ]
 

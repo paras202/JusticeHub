@@ -3,7 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { appointments } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
-import { eq, } from "drizzle-orm";
+import { eq } from "drizzle-orm";
+
+// Add this export to mark the route as dynamic
+export const dynamic = 'force-dynamic';
 
 // GET endpoint to retrieve appointments for a lawyer
 export async function GET(request: NextRequest) {
