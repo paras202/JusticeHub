@@ -426,10 +426,10 @@ export default function LawyerDashboardPage() {
           </button>
           <Button 
                                   className="w-full bg-law-primary hover:bg-law-primary/90"
-                                  onClick={() => window.location.href = "/videocall"}
+                                  onClick={() => window.location.href = "/video-call"}
 >
                                   <MessageSquare className="mr-2 h-4 w-4" />
-                                  Request a video call
+                                  Join a video call
                                  </Button>
         </nav>
       </aside>
