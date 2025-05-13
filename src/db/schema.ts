@@ -100,3 +100,27 @@ export const consultations = pgTable("consultations", {
   notes: text("notes"),
   createdAt: timestamp("created_at").defaultNow().notNull()
 });
+
+// Direct Messages table
+export const directMessages = pgTable("direct_messages", {
+  id: serial("id").primaryKey(),
+  conversationId: text("conversation_id").notNull(), // Used to group messages in a conversation
+  senderId: text("sender_id").notNull(), // Clerk user ID of sender
+  receiverId: text("receiver_id").notNull(), // Clerk user ID of recipient
+  content: text("content").notNull(),
+  read: boolean("read").default(false).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull()
+});
+
+// Appointments table
+export const appointments = pgTable("appointments", {
+  id: serial("id").primaryKey(),
+  lawyerId: integer("lawyer_id").notNull().references(() => lawyersre.id),
+  userId: text("user_id").notNull(), // Clerk user ID
+  date: timestamp("date").notNull(),
+  duration: integer("duration").notNull(), // in minutes
+  status: text("status").notNull().default("pending"), // pending, confirmed, completed, cancelled
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull()
+});

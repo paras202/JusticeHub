@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { 
   ArrowRight, 
   CheckCircle, 
-  LogIn, 
+  // LogIn, 
   Scale, 
   Shield, 
   Sparkles, 
@@ -24,10 +24,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { UserButton } from "@clerk/nextjs"
+// import { UserButton } from "@clerk/nextjs"
 import { useUser } from "@clerk/nextjs"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
+import { Navbar } from "@/components/ui/navbar"
 
 export default function HomePage() {
   const { isLoaded, isSignedIn } = useUser()
@@ -195,7 +196,8 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="sticky top-0 z-50 border-b px-3 flex justify-center border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <Navbar/>
+      {/* <header className="sticky top-0 z-50 border-b px-3 flex justify-center border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between py-4">
           <div className="flex items-center gap-2">
             <Scale className="h-6 w-6 text-law-secondary" />
@@ -268,7 +270,7 @@ export default function HomePage() {
             )}
           </div>
         </div>
-      </header>
+      </header> */}
 
       <main className="flex-1">
         {/* Hero Section with Carousel */}

@@ -289,6 +289,20 @@ type RawMessage = {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    onClick={() => router.push(`/consultations/${lawyerId}`)}
+                  >
+                    <Clock className="h-5 w-5" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>View Consultations</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
                   <Button variant="ghost" size="icon" onClick={handleScheduleConsultation}>
                     <Calendar className="h-5 w-5" />
                   </Button>

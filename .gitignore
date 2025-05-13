@@ -88,3 +88,12 @@ coverage.xml
 *.pem
 *.tsbuildinfo
 next-env.d.ts
+
+g_credentials.json
+
+drizzle
+
+index.pkl
+index.faiss
+
+extra/
