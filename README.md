@@ -189,9 +189,9 @@ DATABASE_URL=your_postgresql_url
 
 | **Home Page** | **Know Your Rights** |
 |:-------------:|:--------------------:|
-| ![Home](public/screenshots/home.png) | ![KYR](public/screenshots/kyr.png) |
+| ![Home](src/public/screenshots/home.png) | ![KYR](src/public/screenshots/kyr.png) |
 | **Document Analyzer** | **Lawyer Connect** |
-| ![Analyzer](public/screenshots/analyzer.png) | ![Lawyers](public/screenshots/lawyer-list.png) |
+| ![Analyzer](src/public/screenshots/analyzer.png) | ![Lawyers](src/public/screenshots/lawyer-list.png) |
 
 </div>
 
@@ -239,7 +239,7 @@ DATABASE_URL=your_postgresql_url
 ### 📊 **Project Presentation**
 *Comprehensive presentation covering methodology, implementation, and results*
 
-<a href="docs/JusticeHub_AI_Presentation.pptx" target="_blank">
+<a href="src/docs/JusticeHub_AI_Presentation.pptx" target="_blank">
   <img src="https://img.shields.io/badge/📈_View_Presentation-PowerPoint-B7472A?style=for-the-badge&logo=microsoft-powerpoint&logoColor=white" alt="Project Presentation" />
 </a>
 
@@ -258,7 +258,7 @@ DATABASE_URL=your_postgresql_url
 ### 📘 **Detailed Project Report**
 *In-depth technical documentation and research findings*
 
-<a href="docs/JusticeHub_AI_Final_Report.pdf" target="_blank">
+<a href="src/docs/JusticeHub_AI_Final_Report.pdf" target="_blank">
   <img src="https://img.shields.io/badge/📄_Read_Report-PDF-DC143C?style=for-the-badge&logo=adobe-acrobat-reader&logoColor=white" alt="Project Report" />
 </a>
 
