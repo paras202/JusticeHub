@@ -223,7 +223,7 @@ DATABASE_URL=your_postgresql_url
 ### 🎥 **Project Demo Video**
 *Complete walkthrough of JusticeHub AI features and functionality*
 
-<a href="https://www.youtube.com/watch?v=your-demo-video-id" target="_blank">
+<a href="https://youtu.be/99JGu97RHqI" target="_blank">
   <img src="https://img.shields.io/badge/🎬_Watch_Full_Demo-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=282828" alt="Project Demo Video" />
 </a>
 
