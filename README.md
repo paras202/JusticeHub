@@ -229,10 +229,7 @@ DATABASE_URL=your_postgresql_url
 
 **📹 Video Contents:**
 - Live application demonstration
-- Feature walkthrough (Know Your Rights with assistant, Document Analyzer, Lawyer Connect)
-- RAG implementation explanation
-- Technical architecture overview
-- Real-time AI interaction showcase
+- Feature walkthrough (Your Rights with assistant, Document Analyzer, Lawyer Connect)
 
 ---
 
