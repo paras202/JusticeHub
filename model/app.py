@@ -2,7 +2,7 @@ import os
 os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "true"
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 from huggingface_hub import login
-login(token="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")
+login(token=**************)
 print("Successfully logged in to Hugging Face")
 
 import tempfile
